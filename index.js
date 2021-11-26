@@ -5,7 +5,7 @@ require("dotenv").config();
 
 var admin = require("firebase-admin");
 
-var serviceAccount = "./tooth-fairies-firebase-adminsdk.json";
+var serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
@@ -268,9 +268,9 @@ async function run() {
 run().catch(console.dir);
 
 app.get("/", (req, res) => {
-	res.send("Doctors Portal Server is running just fine");
+	res.send("Tooth Fairies Server is running just fine");
 });
 
 app.listen(port, () => {
-	console.log("Doctors Portal Server running on port :", port);
+	console.log("Tooth Fairies Server running on port :", port);
 });
